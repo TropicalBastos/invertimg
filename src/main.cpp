@@ -51,7 +51,7 @@ bool isCompatibleFileType(const string& filePath, IMAGEDATA& imagedata){
 }
 
 void invertimage(const string& filePath, const string& fileOutput){
-  invertimg::invert(filePath, fileOutput);
+
 }
 
 int main(int argc, char** argv){
@@ -90,9 +90,14 @@ int main(int argc, char** argv){
 
   cout << "Correct file type, proceeding..." << endl;
 
-  auto imgdata = invertimg::binary_load<vector<uint8_t>>(imageFile);
-  invertimg::invert_image(imgdata, id.imageType);
-  invertimg::binary_save(imgdata, output);
+  if(!invertimg::invert(imageFile, output)){
+
+    cerr << "Error: could not write file, check arguments and file type"
+    << endl;
+
+    return 0;
+
+  }
 
   cout << "Image file inverted successfully!\n";
 

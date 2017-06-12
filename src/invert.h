@@ -7,13 +7,12 @@
 #include<iostream>
 #include<vector>
 #include<string>
-#include "../dependencies/CImg.h"
+#include "../dependencies/CImg.h" //external image processing library
+
+#define JPG_HEADER_LEN 22
+#define JPG_TAIL 2
 
 namespace invertimg{
-
-  //invert the image and output to path
-  void invert(const std::string&,
-              const std::string&);
 
   template<class Container>
   Container binary_load(std::string const & filePath){
@@ -50,19 +49,29 @@ namespace invertimg{
 
   }
 
+/* Old unfinished low level method
   template<class Container>
   void invert_image(Container &data, const char* imagetype){
 
-    for(auto it = data.begin(); it < data.end(); it++){
-      std::stringstream ss;
-      uint8_t val = (uint8_t) *it;
-      if(val == 0xff){
-        val = 0x0f;
+    int count = 0;
+
+    for(auto it = data.begin(); it < data.end() - JPG_TAIL; it++){
+
+      //only change hex values when the iterator has passed the file header bits
+      if(count > JPG_HEADER_LEN){
+
+        std::stringstream ss;
+        uint8_t val = (uint8_t) *it;
+        val = ~val; //invert bits
         *it = val;
       }
+
+      count++;
     }
 
   }
+  */
+
 
   template<class Container>
   void binary_save(Container && data, std::string const & output){
@@ -79,6 +88,8 @@ namespace invertimg{
   }
 
   void read(std::string const &);
+
+  bool invert(std::string const &, std::string const &);
 
 }
 
