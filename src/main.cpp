@@ -11,6 +11,7 @@
 #define PNG "PNG"
 #define JPG "JPG"
 #define JPEG "JPG"
+#define ERROR "\033[1;31merror: \033[0m"
 
 using namespace std;
 
@@ -59,13 +60,13 @@ int main(int argc, char** argv){
   IMAGEDATA id;
 
   if(argc < 3){
-    cout << "Not enough arguments specified, aborting." << endl;
+    cerr << ERROR << "Not enough arguments specified, aborting." << endl;
     cout << USAGE << endl;
     return 0;
   }
 
   if(argc > 3){
-    cout << "Too many arguments specified" << endl << USAGE
+    cerr << ERROR << "Too many arguments specified" << endl << USAGE
      << endl;
      return 0;
   }
@@ -75,16 +76,16 @@ int main(int argc, char** argv){
 
 
   if(!fileExists(imageFile)){
-      cout << "File at path " << argv[1] << " does not exist" << endl;
+      cerr << ERROR << "File at path " << argv[1] << " does not exist" << endl;
       return 0;
   }
 
   if(!isCompatibleFileType(imageFile, id) ||
      !isCompatibleFileType(output, id)){
 
-      cout << "Incorrect file type specified: " << imageFile << endl <<
+      cerr << ERROR << "Incorrect file type specified: " << imageFile << endl <<
       FILETYPE << endl << USAGE << endl;
-    return 0;
+      return 0;
 
   }
 
