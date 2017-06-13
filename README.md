@@ -19,4 +19,4 @@ For example:
 `sudo invertimg plane.jpg invertedplane.jpg`
 
 
-Feel free to contribute to add anymore features to this otherwise one-dimensional program!
+Fork away and contribute to add anymore features to this otherwise single utility program!
