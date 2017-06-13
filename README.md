@@ -2,7 +2,7 @@
 
 Invert jpg and png files on the fly with the command line, no need for crazy heavy image manipulation GUI's!
 
-To install from source simple clone the repository and:
+To install from source simply clone the repository and:
 
 `./configure.sh`
 
