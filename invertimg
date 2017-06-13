@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd $(pwd)
+
+filePath=$1
+output=$2
+
+invertimage.out $filePath $output
