@@ -1,4 +1,4 @@
-## invertimg
+# invertimg
 
 Invert jpg and png files on the fly with the command line, no need for crazy heavy image manipulation GUI's!
 
@@ -8,7 +8,7 @@ To install from source simple clone the repository and:
 
 Make sure you have given the file execute permissions
 
-# Usage:
+### Usage:
 
 The program takes only two arguments: the input file and where the file should be outputted
 
